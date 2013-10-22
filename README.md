@@ -16,12 +16,12 @@ Keep the master branch up to date with remote
 
 `git svn-update $BRANCH`
 
-Keep the master branch and a development branch up to date with remote
+Keep the master branch and a specified branch up to date with remote
 
 `git svn-dcommit-branch`
 
-Reintegrate the current branch into master and svn dcommit it
+Rebase the current branch to master and svn dcommit it
 
 `git svn-dcommit-branch $BRANCH`
 
-Reintegrate a development branch into master and svn dcommit it
+Rebase a specified branch to master and svn dcommit it
