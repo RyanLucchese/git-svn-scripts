@@ -7,11 +7,12 @@ fi
 
 # get branch to use
 BRANCH=''
+CURRENT_BRANCH="`git rev-parse --abbrev-ref HEAD`"
 
 # if no argument is supplied, try to use the current branch
 if [ -z $1 ]
 then
-	BRANCH="`git rev-parse --abbrev-ref HEAD`"
+	BRANCH=$CURRENT_BRANCH
 else
 	BRANCH=$1
 	# Check to make sure specified branch exists
@@ -22,11 +23,16 @@ else
 	fi
 fi
 
+if [ $CURRENT_BRANCH != 'master' ]
+then
+	git checkout master
+fi
+
 if [ $BRANCH == 'master' ]
 then
 	echo "Syncing branch master with remote"
-	git checkout master && git svn rebase
+	git svn rebase
 else
 	echo "Syncing branch $BRANCH and master with remote"
-	git checkout master && git svn rebase && git checkout $BRANCH && git rebase master
+	git svn rebase && git checkout $BRANCH && git rebase master
 fi
