@@ -25,13 +25,16 @@ else
 	fi
 fi
 
-# make sure we're up to date with remote
-git svn-update
-
 # reintegrate branch into master if necessary, and dcommit
 if [ $BRANCH == 'master' ]
 then
+	# make sure we're up to date with remote
+	git svn-update
+	# make sure remote is up to date with us
 	git svn dcommit
 else
+	# make sure we're up to date with remote
+	git svn-update $BRANCH
+	# make sure remote is up to date with us
 	git checkout master && git rebase $BRANCH && git svn dcommit
 fi
