@@ -6,7 +6,9 @@ A collection of scripts to make life easier for git svn users
 Installation
 ===============
 
-Copy the scripts to a place in $PATH, like ~/bin
+./install.sh
+
+If you don't want to install to $HOME/bin, cp git-svn-\* to another location in $PATH
 
 Usage
 ===============
