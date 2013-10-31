@@ -29,12 +29,12 @@ fi
 if [ $BRANCH == 'master' ]
 then
 	# make sure we're up to date with remote
-	git svn-update
+	git svn-update || exit 1
 	# make sure remote is up to date with us
 	git svn dcommit
 else
 	# make sure we're up to date with remote
-	git svn-update $BRANCH
+	git svn-update $BRANCH || exit 1
 	# make sure remote is up to date with us
 	git checkout master && git rebase $BRANCH && git svn dcommit
 fi

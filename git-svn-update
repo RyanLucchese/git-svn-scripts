@@ -28,7 +28,7 @@ fi
 # checkout master branch if we're not on it already
 if [ $CURRENT_BRANCH != 'master' ]
 then
-	git checkout master
+	git checkout master || exit 1;
 fi
 
 # rebase svn and branch if necessary
